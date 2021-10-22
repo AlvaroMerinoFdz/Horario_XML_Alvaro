@@ -49,6 +49,7 @@ namespace Horario_XML_Alvaro
             this.dsDatos = new System.Data.DataSet();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.sfdGuardar = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorario)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbDatos.SuspendLayout();
@@ -57,13 +58,17 @@ namespace Horario_XML_Alvaro
             // 
             // dgvHorario
             // 
+            this.dgvHorario.AllowUserToAddRows = false;
             this.dgvHorario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHorario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHorario.Location = new System.Drawing.Point(12, 12);
             this.dgvHorario.MultiSelect = false;
             this.dgvHorario.Name = "dgvHorario";
             this.dgvHorario.Size = new System.Drawing.Size(776, 201);
             this.dgvHorario.TabIndex = 0;
+            this.dgvHorario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorario_CellClick);
+            this.dgvHorario.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorario_CellValueChanged);
             // 
             // groupBox1
             // 
@@ -92,6 +97,7 @@ namespace Horario_XML_Alvaro
             this.cmbDia.Name = "cmbDia";
             this.cmbDia.Size = new System.Drawing.Size(121, 23);
             this.cmbDia.TabIndex = 3;
+            this.cmbDia.SelectedIndexChanged += new System.EventHandler(this.cmbDia_SelectedIndexChanged);
             // 
             // cmbHora
             // 
@@ -107,6 +113,7 @@ namespace Horario_XML_Alvaro
             this.cmbHora.Name = "cmbHora";
             this.cmbHora.Size = new System.Drawing.Size(121, 23);
             this.cmbHora.TabIndex = 2;
+            this.cmbHora.SelectedIndexChanged += new System.EventHandler(this.cmbHora_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -136,6 +143,7 @@ namespace Horario_XML_Alvaro
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "GUARDAR HORARIO";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCargar
             // 
@@ -245,6 +253,7 @@ namespace Horario_XML_Alvaro
             this.btnAdd.Size = new System.Drawing.Size(45, 37);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEliminar
             // 
@@ -255,6 +264,11 @@ namespace Horario_XML_Alvaro
             this.btnEliminar.Size = new System.Drawing.Size(45, 37);
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // sfdGuardar
+            // 
+            this.sfdGuardar.Filter = "Archivos xml |*.xml";
             // 
             // frmHorario
             // 
@@ -304,6 +318,7 @@ namespace Horario_XML_Alvaro
         private System.Data.DataSet dsDatos;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.SaveFileDialog sfdGuardar;
     }
 }
 
