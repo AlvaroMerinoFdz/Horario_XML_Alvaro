@@ -29,7 +29,7 @@ namespace Horario_XML_Alvaro
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHorario));
             this.dgvHorario = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -64,14 +64,14 @@ namespace Horario_XML_Alvaro
             this.dgvHorario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHorario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHorario.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHorario.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHorario.Location = new System.Drawing.Point(12, 12);
             this.dgvHorario.MultiSelect = false;
             this.dgvHorario.Name = "dgvHorario";
@@ -97,6 +97,7 @@ namespace Horario_XML_Alvaro
             // 
             // cmbDia
             // 
+            this.cmbDia.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmbDia.FormattingEnabled = true;
             this.cmbDia.Items.AddRange(new object[] {
             "Lunes",
@@ -112,6 +113,8 @@ namespace Horario_XML_Alvaro
             // 
             // cmbHora
             // 
+            this.cmbHora.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmbHora.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbHora.FormattingEnabled = true;
             this.cmbHora.Items.AddRange(new object[] {
             "Primera",
@@ -185,6 +188,8 @@ namespace Horario_XML_Alvaro
             // 
             // lstbModulos
             // 
+            this.lstbModulos.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lstbModulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstbModulos.FormattingEnabled = true;
             this.lstbModulos.ItemHeight = 15;
             this.lstbModulos.Items.AddRange(new object[] {
@@ -196,7 +201,7 @@ namespace Horario_XML_Alvaro
             "PMDM"});
             this.lstbModulos.Location = new System.Drawing.Point(227, 72);
             this.lstbModulos.Name = "lstbModulos";
-            this.lstbModulos.Size = new System.Drawing.Size(251, 94);
+            this.lstbModulos.Size = new System.Drawing.Size(251, 90);
             this.lstbModulos.TabIndex = 5;
             // 
             // label5
@@ -210,6 +215,7 @@ namespace Horario_XML_Alvaro
             // 
             // cmbCurso
             // 
+            this.cmbCurso.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmbCurso.FormattingEnabled = true;
             this.cmbCurso.Items.AddRange(new object[] {
             "Segundo"});
@@ -229,13 +235,15 @@ namespace Horario_XML_Alvaro
             // 
             // lstbCiclo
             // 
+            this.lstbCiclo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lstbCiclo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstbCiclo.FormattingEnabled = true;
             this.lstbCiclo.ItemHeight = 15;
             this.lstbCiclo.Items.AddRange(new object[] {
             "DAM"});
             this.lstbCiclo.Location = new System.Drawing.Point(23, 49);
             this.lstbCiclo.Name = "lstbCiclo";
-            this.lstbCiclo.Size = new System.Drawing.Size(120, 94);
+            this.lstbCiclo.Size = new System.Drawing.Size(120, 90);
             this.lstbCiclo.TabIndex = 1;
             // 
             // label3
@@ -311,6 +319,7 @@ namespace Horario_XML_Alvaro
             this.Name = "frmHorario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Horario";
+            this.Load += new System.EventHandler(this.frmHorario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorario)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

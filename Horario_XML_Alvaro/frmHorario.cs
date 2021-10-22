@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -16,26 +11,47 @@ namespace Horario_XML_Alvaro
     {
         String ruta;
         bool cargado;
-        private string[] ayuda = {"Joaquin", "Jose Alberto", "Inma", "Ambrosio", "Marcelo", "Fernado"};
+        private string[] ayuda = { "Joaquin", "Jose Alberto", "Inma", "Ambrosio", "Marcelo", "Fernado" };
 
+        //Lo usamos para redondear los bordes y lugo lo llamamos en el constructor del formulario.
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, // x-coordinate of upper-left corner
-    int nTopRect, // y-coordinate of upper-left corner
-    int nRightRect, // x-coordinate of lower-right corner
-    int nBottomRect, // y-coordinate of lower-right corner
-    int nWidthEllipse, // height of ellipse
-    int nHeightEllipse // width of ellipse
- );
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        //En WindowsForms no tiene ToolTipText para botones pero se lo vamos a añadir nosotros
+        System.Windows.Forms.ToolTip toolTipBotones = new System.Windows.Forms.ToolTip();
 
         public frmHorario()
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            cargarDefecto();
 
+            //Para usar los ToolTipText
+            this.btnAdd.MouseHover += new EventHandler(btnAdd_MouseHover);
+            this.btnEliminar.MouseHover += new EventHandler(btnEliminar_MouseHover);
+            this.btnCerrarSesion.MouseHover += new EventHandler(btnCerrarSesion_MouseHover);
         }
 
-        
+        void btnAdd_MouseHover(object sender, EventArgs e)
+        {
+            toolTipBotones.SetToolTip(this.btnAdd, "Añadir");
+        }
+
+        void btnEliminar_MouseHover(object sender, EventArgs e)
+        {
+            toolTipBotones.SetToolTip(this.btnEliminar, "Eliminar");
+        }
+
+        void btnCerrarSesion_MouseHover(object sender, EventArgs e)
+        {
+            toolTipBotones.SetToolTip(this.btnCerrarSesion, "Salir del programa");
+        }
+
         private void cargarDefecto()
         {
             cmbCurso.SelectedIndex = 0;
@@ -57,15 +73,16 @@ namespace Horario_XML_Alvaro
                 columna = cmbDia.SelectedIndex + 1;
                 dgvHorario.Rows[fila].Cells[columna].Selected = true;
             }
-            catch(Exception e) { 
+            catch (Exception e)
+            {
             }
-            
+
         }
         private void crearTabla()
         {
             rellenarColumnas();
             rellenarFilas();
-            
+
         }
         private void rellenarColumnas()
         {
@@ -86,12 +103,12 @@ namespace Horario_XML_Alvaro
             dsDatos.Tables[0].Rows.Add("12:40-13:35");
             dsDatos.Tables[0].Rows.Add("13:35-14:30");
         }
-        
+
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
             XmlDocument xDoc;
-            if(ofdAbrir.ShowDialog() == DialogResult.OK)
+            if (ofdAbrir.ShowDialog() == DialogResult.OK)
             {
                 ruta = ofdAbrir.FileName;
                 LimpiarDatos();
@@ -108,7 +125,7 @@ namespace Horario_XML_Alvaro
                 XmlNodeList horas = ((XmlElement)horario[0]).GetElementsByTagName("hora");
                 int contHora = 0;
 
-                foreach(XmlElement hora in horas)
+                foreach (XmlElement hora in horas)
                 {
                     //Construimos 2 arrays de strings, uno para los textos y otro con las ayudas.
                     string[] filaPantalla = new string[6];
@@ -120,7 +137,7 @@ namespace Horario_XML_Alvaro
                     int col = 1;
 
                     XmlNodeList dias = hora.GetElementsByTagName("dia");
-                    foreach(XmlElement dia in dias)
+                    foreach (XmlElement dia in dias)
                     {
                         //Cargamos los datos de pantalla
                         XmlNodeList entradaPantalla = dia.GetElementsByTagName("pantalla");
@@ -137,7 +154,7 @@ namespace Horario_XML_Alvaro
                     dgvHorario.DataSource = dsDatos.Tables[0];
 
                     //Con esto metemos la ayuda a el ToolTipText
-                    for (int c = 1;  c < filaAyuda.Length ;   c++)
+                    for (int c = 1; c < filaAyuda.Length; c++)
                     {
                         dgvHorario.Rows[contHora].Cells[c].ToolTipText = filaAyuda[c];
                     }
@@ -244,7 +261,7 @@ namespace Horario_XML_Alvaro
             cmbDia.SelectedIndexChanged -= cmbDia_SelectedIndexChanged;
             cmbHora.SelectedIndexChanged -= cmbHora_SelectedIndexChanged;
 
-            if(dgvHorario.SelectedCells[0].ColumnIndex == 0)
+            if (dgvHorario.SelectedCells[0].ColumnIndex == 0)
             {
                 cmbDia.SelectedIndex = 0;
                 cmbHora.SelectedIndex = dgvHorario.SelectedCells[0].RowIndex;
@@ -290,6 +307,12 @@ namespace Horario_XML_Alvaro
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void frmHorario_Load(object sender, EventArgs e)
+        {
+            cargarDefecto();
+            seleccionarCelda();
         }
     }
 }
