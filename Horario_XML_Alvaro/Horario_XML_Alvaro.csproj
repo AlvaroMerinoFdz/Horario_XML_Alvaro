@@ -83,8 +83,5 @@
   <ItemGroup>
     <Folder Include="Recurso\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\imgAdd.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

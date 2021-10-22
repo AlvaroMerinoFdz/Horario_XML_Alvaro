@@ -29,6 +29,7 @@ namespace Horario_XML_Alvaro
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHorario));
             this.dgvHorario = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,6 +51,7 @@ namespace Horario_XML_Alvaro
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.sfdGuardar = new System.Windows.Forms.SaveFileDialog();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorario)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbDatos.SuspendLayout();
@@ -62,9 +64,18 @@ namespace Horario_XML_Alvaro
             this.dgvHorario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHorario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvHorario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHorario.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHorario.Location = new System.Drawing.Point(12, 12);
             this.dgvHorario.MultiSelect = false;
             this.dgvHorario.Name = "dgvHorario";
+            this.dgvHorario.ReadOnly = true;
             this.dgvHorario.Size = new System.Drawing.Size(776, 201);
             this.dgvHorario.TabIndex = 0;
             this.dgvHorario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorario_CellClick);
@@ -270,12 +281,24 @@ namespace Horario_XML_Alvaro
             // 
             this.sfdGuardar.Filter = "Archivos xml |*.xml";
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.BackgroundImage")));
+            this.btnCerrarSesion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(12, 412);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(45, 37);
+            this.btnCerrarSesion.TabIndex = 10;
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // frmHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.gbDatos);
@@ -283,6 +306,7 @@ namespace Horario_XML_Alvaro
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvHorario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHorario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -319,6 +343,7 @@ namespace Horario_XML_Alvaro
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.SaveFileDialog sfdGuardar;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }
 

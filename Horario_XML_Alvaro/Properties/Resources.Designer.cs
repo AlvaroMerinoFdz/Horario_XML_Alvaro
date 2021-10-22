@@ -59,14 +59,5 @@ namespace Horario_XML_Alvaro.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a .
-        /// </summary>
-        internal static string add {
-            get {
-                return ResourceManager.GetString("add", resourceCulture);
-            }
-        }
     }
 }
